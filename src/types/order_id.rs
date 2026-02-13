@@ -1,22 +1,22 @@
 use crate::traits::order_id::{ReadOrderIdInner, WriteOrderIdInner};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub struct OrderId<OID>(OID);
+pub struct OrderId<OIDI>(OIDI);
 
-impl<OID> OrderId<OID> {
-    pub fn new(inner: OID) -> Self {
+impl<OIDI> OrderId<OIDI> {
+    pub fn new(inner: OIDI) -> Self {
         Self(inner)
     }
 }
 
-impl<OID: Clone> ReadOrderIdInner<OID> for OrderId<OID> {
-    fn read_order_id_inner(&self) -> OID {
+impl<OIDI: Clone> ReadOrderIdInner<OIDI> for OrderId<OIDI> {
+    fn read_order_id_inner(&self) -> OIDI {
         self.0.clone()
     }
 }
 
-impl<OID> WriteOrderIdInner<OID> for OrderId<OID> {
-    fn write_order_id_inner(&mut self, inner: OID) -> &mut Self {
+impl<OIDI> WriteOrderIdInner<OIDI> for OrderId<OIDI> {
+    fn write_order_id_inner(&mut self, inner: OIDI) -> &mut Self {
         self.0 = inner;
         self
     }

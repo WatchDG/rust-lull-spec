@@ -1,35 +1,35 @@
 use crate::types::order_id::OrderId;
 
-pub trait ReadOrderIdInner<OID> {
-    fn read_order_id_inner(&self) -> OID;
+pub trait ReadOrderIdInner<OIDI> {
+    fn read_order_id_inner(&self) -> OIDI;
 }
 
 pub trait ReadOrderId<OID> {
     fn read_order_id(&self) -> OrderId<OID>;
 }
 
-pub trait WriteOrderIdInner<OID> {
-    fn write_order_id_inner(&mut self, inner: OID) -> &mut Self;
+pub trait WriteOrderIdInner<OIDI> {
+    fn write_order_id_inner(&mut self, inner: OIDI) -> &mut Self;
 }
 
 pub trait WriteOrderId<OID> {
     fn write_order_id(&mut self, id: &impl ReadOrderIdInner<OID>) -> &mut Self;
 }
 
-impl<OID, T> ReadOrderId<OID> for T
+impl<OIDI, O> ReadOrderId<OIDI> for O
 where
-    T: ReadOrderIdInner<OID>,
+    O: ReadOrderIdInner<OIDI>,
 {
-    fn read_order_id(&self) -> OrderId<OID> {
+    fn read_order_id(&self) -> OrderId<OIDI> {
         OrderId::new(self.read_order_id_inner())
     }
 }
 
-impl<OID: Clone, T> WriteOrderId<OID> for T
+impl<OIDI: Clone, O> WriteOrderId<OIDI> for O
 where
-    T: WriteOrderIdInner<OID>,
+    O: WriteOrderIdInner<OIDI>,
 {
-    fn write_order_id(&mut self, id: &impl ReadOrderIdInner<OID>) -> &mut Self {
+    fn write_order_id(&mut self, id: &impl ReadOrderIdInner<OIDI>) -> &mut Self {
         self.write_order_id_inner(id.read_order_id_inner())
     }
 }
