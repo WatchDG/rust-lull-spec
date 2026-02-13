@@ -36,7 +36,7 @@ impl<OI, OIDI> ReadOrderIdInnerRef<OIDI> for Order<OI, OIDI> {
     }
 }
 
-impl<OIDI> ReadOrderIdRef<OIDI> for Order<OIDI, OIDI> {
+impl<OI, OIDI> ReadOrderIdRef<OIDI> for Order<OI, OIDI> {
     fn read_order_id_ref(&self) -> &OrderId<OIDI> {
         &self.id
     }
