@@ -17,6 +17,10 @@ where
     }
 }
 
+pub trait ReadOrderIdRef<OIDI> {
+    fn read_order_id_ref(&self) -> &OrderId<OIDI>;
+}
+
 pub trait ReadOrderId<OID> {
     fn read_order_id(&self) -> OrderId<OID>;
 }

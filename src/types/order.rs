@@ -1,5 +1,5 @@
-use crate::traits::order::ReadOrder;
-use crate::traits::order_id::ReadOrderId;
+use crate::traits::order::ReadOrderRef;
+use crate::traits::order_id::{ReadOrderId, ReadOrderIdRef};
 use crate::types::order_id::OrderId;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
@@ -18,8 +18,14 @@ where
     }
 }
 
-impl<OI: Clone, OIDI: Clone> ReadOrder<OI, OIDI> for Order<OI, OIDI> {
-    fn read_order(&self) -> Order<OI, OIDI> {
-        self.clone()
+impl<OI, OIDI> ReadOrderRef<OI, OIDI> for Order<OI, OIDI> {
+    fn read_order_ref(&self) -> &Order<OI, OIDI> {
+        self
+    }
+}
+
+impl<OIDI> ReadOrderIdRef<OIDI> for Order<OIDI, OIDI> {
+    fn read_order_id_ref(&self) -> &OrderId<OIDI> {
+        &self.id
     }
 }
