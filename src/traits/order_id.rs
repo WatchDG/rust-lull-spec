@@ -29,3 +29,7 @@ where
         OrderId::new(self.read_order_id_inner())
     }
 }
+
+pub trait WriteOrderIdInner<OIDI> {
+    fn write_order_id_inner(&mut self, inner: OIDI) -> &mut Self;
+}
