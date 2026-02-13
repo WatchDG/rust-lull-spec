@@ -1,4 +1,7 @@
-use lull_spec::{Order, ReadOrderIdInnerRef, ReadOrderInner, ReadOrderInnerRef};
+use lull_spec::{
+    Order, OrderId, ReadOrderId, ReadOrderIdInner, ReadOrderIdInnerRef, ReadOrderInner,
+    ReadOrderInnerRef,
+};
 
 #[test]
 fn order_my_struct() {
@@ -19,4 +22,7 @@ fn order_my_struct() {
         &MyOrderStruct { id: 1000usize }
     );
     assert_eq!(order.read_order_inner(), MyOrderStruct { id: 1000usize });
+    assert_eq!(order.read_order_id_inner_ref(), &1000usize);
+    assert_eq!(order.read_order_id_inner(), 1000usize);
+    assert_eq!(order.read_order_id(), OrderId::new(1000usize));
 }

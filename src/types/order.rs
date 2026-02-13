@@ -1,5 +1,5 @@
 use crate::traits::order::{ReadOrderInnerRef, ReadOrderRef};
-use crate::traits::order_id::{ReadOrderId, ReadOrderIdRef};
+use crate::traits::order_id::{ReadOrderId, ReadOrderIdInnerRef, ReadOrderIdRef};
 use crate::types::order_id::OrderId;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
@@ -27,6 +27,12 @@ impl<OI, OIDI> ReadOrderInnerRef<OI> for Order<OI, OIDI> {
 impl<OI, OIDI> ReadOrderRef<OI, OIDI> for Order<OI, OIDI> {
     fn read_order_ref(&self) -> &Order<OI, OIDI> {
         self
+    }
+}
+
+impl<OI, OIDI> ReadOrderIdInnerRef<OIDI> for Order<OI, OIDI> {
+    fn read_order_id_inner_ref(&self) -> &OIDI {
+        self.id.read_order_id_inner_ref()
     }
 }
 
