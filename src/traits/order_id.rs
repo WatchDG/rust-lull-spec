@@ -29,20 +29,3 @@ where
         OrderId::new(self.read_order_id_inner())
     }
 }
-
-// pub trait WriteOrderIdInner<OIDI> {
-//     fn write_order_id_inner(&mut self, inner: OIDI) -> &mut Self;
-// }
-
-// pub trait WriteOrderId<OID> {
-//     fn write_order_id(&mut self, id: &impl ReadOrderIdInner<OID>) -> &mut Self;
-// }
-
-// impl<OIDI: Clone, T> WriteOrderId<OIDI> for T
-// where
-//     T: WriteOrderIdInner<OIDI>,
-// {
-//     fn write_order_id(&mut self, id: &impl ReadOrderIdInner<OIDI>) -> &mut Self {
-//         self.write_order_id_inner(id.read_order_id_inner())
-//     }
-// }
