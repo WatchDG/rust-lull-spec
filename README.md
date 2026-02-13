@@ -1,2 +1,2 @@
 # rust-lull-spec
-Lull Spec: Trading &amp; Risk Interface Specification
+Lull Spec: Trading and Risk Interface Specification
