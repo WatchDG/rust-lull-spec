@@ -1,4 +1,6 @@
-use lull_spec::{OrderId, ReadOrderId, ReadOrderIdInner, ReadOrderIdInnerRef, WriteOrderIdInner};
+use lull_spec::{
+    OrderId, ReadOrderId, ReadOrderIdInner, ReadOrderIdInnerRef, WriteOrderId, WriteOrderIdInner,
+};
 
 #[test]
 fn read_order_id_usize() {
@@ -54,4 +56,6 @@ fn write_order_id_usize() {
         .write_order_id_inner(2000usize)
         .write_order_id_inner(3000usize);
     assert_eq!(order_id.read_order_id_inner(), 3000usize);
+    order_id.write_order_id(4000usize).write_order_id(5000usize);
+    assert_eq!(order_id.read_order_id(), OrderId::new(5000usize));
 }
