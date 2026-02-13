@@ -1,4 +1,4 @@
-use crate::traits::order::ReadOrderRef;
+use crate::traits::order::{ReadOrderInnerRef, ReadOrderRef};
 use crate::traits::order_id::{ReadOrderId, ReadOrderIdRef};
 use crate::types::order_id::OrderId;
 
@@ -15,6 +15,12 @@ where
     pub fn new(inner: OI) -> Self {
         let id = inner.read_order_id();
         Self { inner, id }
+    }
+}
+
+impl<OI, OIDI> ReadOrderInnerRef<OI> for Order<OI, OIDI> {
+    fn read_order_inner_ref(&self) -> &OI {
+        &self.inner
     }
 }
 
