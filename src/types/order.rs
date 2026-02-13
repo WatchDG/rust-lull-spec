@@ -1,25 +1,25 @@
-use crate::traits::order::{ReadOrder, WriteOrder};
+use crate::traits::order::ReadOrder;
 use crate::traits::order_id::ReadOrderId;
-use core::marker::PhantomData;
+use crate::types::order_id::OrderId;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub struct Order<O, OIDI>(O, PhantomData<OIDI>);
+pub struct Order<OI, OIDI> {
+    pub inner: OI,
+    pub id: OrderId<OIDI>,
+}
 
-impl<O, OIDI> Order<O, OIDI> {
-    pub fn new(inner: O) -> Self {
-        Self(inner, PhantomData)
+impl<OI, OIDI> Order<OI, OIDI>
+where
+    OI: ReadOrderId<OIDI>,
+{
+    pub fn new(inner: OI) -> Self {
+        let id = inner.read_order_id();
+        Self { inner, id }
     }
 }
 
-impl<O: Clone + ReadOrderId<OIDI>, OIDI: Clone> ReadOrder<O, OIDI> for Order<O, OIDI> {
-    fn read_order(&self) -> Order<O, OIDI> {
+impl<OI: Clone, OIDI: Clone> ReadOrder<OI, OIDI> for Order<OI, OIDI> {
+    fn read_order(&self) -> Order<OI, OIDI> {
         self.clone()
-    }
-}
-
-impl<O, OIDI> WriteOrder<O, OIDI> for Order<O, OIDI> {
-    fn write_order(&mut self, order: Order<O, OIDI>) -> &mut Self {
-        self.0 = order.0;
-        self
     }
 }
