@@ -1,4 +1,4 @@
-use crate::traits::order_id::{ReadOrderIdInnerRef, ReadOrderIdRef, WriteOrderIdInner};
+use crate::traits::order_id::{ReadOrderIdInnerRef, WriteOrderIdInner};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct OrderId<OIDI>(OIDI);
@@ -12,12 +12,6 @@ impl<OIDI> OrderId<OIDI> {
 impl<OIDI> ReadOrderIdInnerRef<OIDI> for OrderId<OIDI> {
     fn read_order_id_inner_ref(&self) -> &OIDI {
         &self.0
-    }
-}
-
-impl<OIDI> ReadOrderIdRef<OIDI> for OrderId<OIDI> {
-    fn read_order_id_ref(&self) -> &OrderId<OIDI> {
-        self
     }
 }
 

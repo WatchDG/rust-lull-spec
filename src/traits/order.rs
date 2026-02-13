@@ -21,6 +21,12 @@ pub trait ReadOrderRef<OI, OIDI> {
     fn read_order_ref(&self) -> &Order<OI, OIDI>;
 }
 
+impl<OI, OIDI> ReadOrderRef<OI, OIDI> for Order<OI, OIDI> {
+    fn read_order_ref(&self) -> &Order<OI, OIDI> {
+        self
+    }
+}
+
 pub trait ReadOrder<OI, OIDI> {
     fn read_order(&self) -> Order<OI, OIDI>;
 }

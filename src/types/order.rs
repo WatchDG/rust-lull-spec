@@ -1,4 +1,4 @@
-use crate::traits::order::{ReadOrderInnerRef, ReadOrderRef};
+use crate::traits::order::ReadOrderInnerRef;
 use crate::traits::order_id::{ReadOrderId, ReadOrderIdInnerRef, ReadOrderIdRef};
 use crate::types::order_id::OrderId;
 
@@ -21,12 +21,6 @@ where
 impl<OI, OIDI> ReadOrderInnerRef<OI> for Order<OI, OIDI> {
     fn read_order_inner_ref(&self) -> &OI {
         &self.inner
-    }
-}
-
-impl<OI, OIDI> ReadOrderRef<OI, OIDI> for Order<OI, OIDI> {
-    fn read_order_ref(&self) -> &Order<OI, OIDI> {
-        self
     }
 }
 
