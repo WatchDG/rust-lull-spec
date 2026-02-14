@@ -1,4 +1,5 @@
 pub mod cancel_order_error;
+pub mod currency;
 pub mod execution_command;
 pub mod order_record_error;
 pub mod order_type;
