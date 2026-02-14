@@ -9,4 +9,4 @@ pub mod new_order;
 pub mod order;
 pub mod order_id;
 pub mod order_record;
-pub mod strategy;
+pub mod trade_strategy;
