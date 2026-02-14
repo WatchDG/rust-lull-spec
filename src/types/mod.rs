@@ -11,5 +11,6 @@ pub mod new_order;
 pub mod order;
 pub mod order_id;
 pub mod order_record;
+pub mod price;
 pub mod quantity;
 pub mod trade_strategy;
