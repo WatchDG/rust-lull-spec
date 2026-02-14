@@ -1,4 +1,4 @@
-// use crate::types::order::Order;
+use crate::types::order::Order;
 
 // pub trait ReadOrderInnerRef<OI> {
 //     fn read_order_inner_ref(&self) -> &OI;
@@ -17,9 +17,9 @@
 //     }
 // }
 
-// pub trait ReadOrderRef<OI, OIDI> {
-//     fn read_order_ref(&self) -> &Order<OI, OIDI>;
-// }
+pub trait ReadOrderRef<OI, OIDI, II> {
+    fn read_order_ref(&self) -> &Order<OI, OIDI, II>;
+}
 
 // impl<OI, OIDI> ReadOrderRef<OI, OIDI> for Order<OI, OIDI> {
 //     fn read_order_ref(&self) -> &Order<OI, OIDI> {
