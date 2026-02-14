@@ -2,6 +2,7 @@ pub mod cancel_order_error;
 pub mod currency;
 pub mod execution_command;
 pub mod order_record_error;
+pub mod order_size;
 pub mod order_type;
 pub mod place_order_error;
 pub mod side;

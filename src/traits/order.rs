@@ -17,8 +17,8 @@ use crate::types::order::Order;
 //     }
 // }
 
-pub trait ReadOrderRef<OI, OIDI, II> {
-    fn read_order_ref(&self) -> &Order<OI, OIDI, II>;
+pub trait ReadOrderRef<OI, OIDI, II, QI, LI, LSI> {
+    fn read_order_ref(&self) -> &Order<OI, OIDI, II, QI, LI, LSI>;
 }
 
 // impl<OI, OIDI> ReadOrderRef<OI, OIDI> for Order<OI, OIDI> {
