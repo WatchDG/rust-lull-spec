@@ -1,11 +1,11 @@
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub enum Signal {
+pub enum TradeSignal {
     Buy,
     Sell,
     Hold,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub enum SignalError {
+pub enum TradeSignalError {
     Unexpected,
 }

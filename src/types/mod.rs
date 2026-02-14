@@ -1,5 +1,7 @@
 pub mod external_order;
 pub mod external_order_id;
+pub mod instrument;
+pub mod instrument_id;
 pub mod new_order;
 pub mod order;
 pub mod order_id;

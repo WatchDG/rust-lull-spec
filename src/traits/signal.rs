@@ -1,7 +1,9 @@
-use crate::enums::signal::Signal;
-use crate::enums::signal::SignalError;
+use crate::enums::trade_signal::TradeSignal;
+use crate::enums::trade_signal::TradeSignalError;
 use core::future::Future;
 
-pub trait ReceiveSignal<SI> {
-    fn receive_signal(&self) -> impl Future<Output = Result<Signal, SignalError>> + Send;
+pub trait ReceiveTradeSignal<SI> {
+    fn receive_trade_signal(
+        &self,
+    ) -> impl Future<Output = Result<TradeSignal, TradeSignalError>> + Send;
 }
