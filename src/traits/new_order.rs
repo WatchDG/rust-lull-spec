@@ -4,16 +4,16 @@ use crate::types::new_order::NewOrder;
 use crate::types::order_record::OrderRecord;
 use core::future::Future;
 
-pub trait SaveOrder<OIDI, II> {
+pub trait SaveOrder<OIDI, II, DTI> {
     fn save_order(
         &self,
         new_order: NewOrder<OIDI, II>,
-    ) -> impl Future<Output = Result<OrderRecord<OIDI, II>, OrderRecordError>> + Send;
+    ) -> impl Future<Output = Result<OrderRecord<OIDI, II, DTI>, OrderRecordError>> + Send;
 }
 
-pub trait LoadOrder<OIDI, II> {
+pub trait LoadOrder<OIDI, II, DTI> {
     fn load_order(
         &self,
         id: impl ReadOrderIdRef<OIDI>,
-    ) -> impl Future<Output = Result<OrderRecord<OIDI, II>, OrderRecordError>> + Send;
+    ) -> impl Future<Output = Result<OrderRecord<OIDI, II, DTI>, OrderRecordError>> + Send;
 }
