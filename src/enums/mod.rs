@@ -7,3 +7,4 @@ pub mod order_type;
 pub mod place_order_error;
 pub mod side;
 pub mod trade_signal;
+pub mod trade_strategy_error;

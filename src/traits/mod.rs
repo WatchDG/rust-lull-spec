@@ -1,3 +1,4 @@
+pub mod build_trade_strategy;
 pub mod cancel_order;
 pub mod new_order;
 pub mod new_order_id;
