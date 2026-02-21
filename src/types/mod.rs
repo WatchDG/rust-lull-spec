@@ -1,3 +1,4 @@
+pub mod candlestick;
 pub mod currency_code;
 pub mod currency_id;
 pub mod datetime;
