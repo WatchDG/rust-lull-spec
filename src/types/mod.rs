@@ -8,6 +8,7 @@ pub mod instrument;
 pub mod instrument_id;
 pub mod lot_size;
 pub mod lots;
+pub mod market_data;
 pub mod new_order;
 pub mod order;
 pub mod order_id;
